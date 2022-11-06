@@ -14,6 +14,10 @@
             <h1>Rekapitulace registrace</h1>
             <div><h2>Registrace byla uspesna.</h2>
 
+                <label for="jmeno" class="radek">Jmeno ditete:</label>
+                [@spring.formInput path="form.jmeno" attributes="readonly"/]
+                <div class="error">[@spring.showErrors "<br>"/]</div>
+
                 <label for="prijmeni" class="radek">Prijmeni ditete:</label>
                 [@spring.formInput path="form.prijmeni" attributes="readonly"/]
                 <div class="error">[@spring.showErrors "<br>"/]</div>
