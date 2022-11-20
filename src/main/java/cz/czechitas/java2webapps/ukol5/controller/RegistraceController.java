@@ -8,25 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.Random;
 import javax.validation.Valid;
-
 /**
  * Kontroler obsluhující registraci účastníků dětského tábora.
  */
 @Controller
 public class RegistraceController {
   private final Random random = new Random();
-
   @GetMapping("/")
   public ModelAndView index() {
     ModelAndView modelAndView = new ModelAndView("/formular");
     modelAndView.addObject("form", new RegistraceForm());
     return modelAndView;
   }
-
   @PostMapping("")
   public Object form(@Valid @ModelAttribute("form") RegistraceForm form, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      return "/formular";
+      return "registrace:/";
     }
     if (form.getVek() <= 9 || form.getVek() >= 15) {
       return "/chybny-vek";
@@ -34,4 +31,5 @@ public class RegistraceController {
     return new ModelAndView("/registrace");
 
   }
+
 }
